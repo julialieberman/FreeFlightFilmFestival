@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women's Free Flight Film Festival 2027</title>
+<meta name="description" content="A film festival celebrating women in free flight. Submit a short film (2–20 min) and win up to $1,000. Deadline May 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --grad: linear-gradient(135deg,#ff8a5c 0%,#ff6b6b 22%,#a24bcf 55%,#4b6ccf 80%,#1e3a8a 100%);
+    --gold:#ffd88a; --ink:#1a1f30; --paper:#fbfaf7; --muted:#5a6072;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;}
+  a{color:inherit;}
+  .btn{display:inline-block;background:var(--gold);color:#3a2a10;font-weight:800;
+    padding:15px 34px;border-radius:999px;text-decoration:none;letter-spacing:.5px;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s ease, box-shadow .15s ease;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.3);}
+  .btn.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);box-shadow:none;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(26,31,48,.92);backdrop-filter:blur(8px);
+    display:flex;justify-content:space-between;align-items:center;padding:14px 28px;}
+  nav .brand{color:#fff;font-weight:800;letter-spacing:.5px;font-size:15px;}
+  nav .brand span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:22px;}
+  nav ul a{color:#e8e8ee;text-decoration:none;font-size:14px;font-weight:600;}
+  nav ul a:hover{color:var(--gold);}
+  @media(max-width:640px){nav ul{display:none;}}
+
+  /* HERO */
+  header.hero{position:relative;min-height:82vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;color:#fff;overflow:hidden;
+    background:linear-gradient(180deg,rgba(15,25,55,.2),rgba(10,15,35,.75)),var(--grad);padding:80px 20px;}
+  .hero .glow{position:absolute;top:-160px;left:50%;transform:translateX(-50%);
+    width:700px;height:700px;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(255,220,150,.5),rgba(255,180,120,.12) 45%,transparent 70%);}
+  .hero .glider{position:absolute;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));}
+  .hero .g1{top:12%;left:9%;font-size:56px;transform:rotate(-8deg);}
+  .hero .g2{top:20%;right:10%;font-size:38px;opacity:.75;transform:rotate(6deg);}
+  .hero .g3{top:34%;left:20%;font-size:30px;opacity:.55;transform:rotate(4deg);}
+  .hero .eyebrow{position:relative;letter-spacing:6px;font-weight:700;font-size:13px;
+    text-transform:uppercase;color:var(--gold);}
+  .hero h1{position:relative;font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(38px,7vw,76px);line-height:.96;margin:14px 0 4px;text-shadow:0 6px 22px rgba(0,0,0,.45);}
+  .hero .year{position:relative;font-family:'Anton',sans-serif;font-size:clamp(64px,12vw,120px);
+    line-height:1;background:linear-gradient(90deg,#ffd88a,#ff9a6b,#ff6b9a);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero p.sub{position:relative;max-width:560px;font-size:clamp(16px,2.4vw,20px);font-weight:600;margin:6px auto 26px;}
+  .hero .cta-row{position:relative;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+
+  /* SECTIONS */
+  section{padding:70px 20px;}
+  .wrap{max-width:960px;margin:0 auto;}
+  .kicker{color:#b8791f;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:13px;text-align:center;}
+  h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(28px,5vw,44px);
+    text-align:center;margin:6px 0 10px;letter-spacing:1px;}
+  .lead{text-align:center;max-width:680px;margin:0 auto 30px;color:var(--muted);font-size:17px;}
+  .alt{background:#f2eee6;}
+  .dark{background:var(--ink);color:#fff;}
+  .dark .lead{color:#c7ccd8;}
+  .dark h2{color:#fff;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px;}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr;}}
+  .card{background:#fff;border-radius:16px;padding:26px 28px;box-shadow:0 8px 26px rgba(0,0,0,.06);}
+  .dark .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);}
+  .card h3{font-size:18px;margin-bottom:10px;}
+  .card ul{list-style:none;}
+  .card ul li{padding:5px 0 5px 26px;position:relative;}
+  .card ul li:before{content:"✓";position:absolute;left:0;color:#1fa971;font-weight:800;}
+
+  /* PRIZES */
+  .prizes{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px;}
+  .prize{background:var(--grad);border-radius:18px;padding:28px 34px;text-align:center;color:#fff;min-width:190px;box-shadow:0 10px 30px rgba(0,0,0,.2);}
+  .prize .amt{font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:var(--gold);}
+  .prize .pl{font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px;margin-top:6px;}
+  .judging{max-width:640px;margin:34px auto 0;text-align:center;font-weight:600;}
+  .judging .bar{display:flex;height:14px;border-radius:8px;overflow:hidden;margin:16px 0 10px;}
+  .judging .bar span{display:block;}
+  .philo{font-style:italic;color:var(--gold);}
+
+  /* TIMELINE */
+  .timeline{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-top:20px;}
+  .tstep{flex:1;min-width:200px;text-align:center;padding:0 16px;position:relative;}
+  .tstep .dot{width:16px;height:16px;border-radius:50%;background:var(--gold);margin:0 auto 12px;}
+  .tstep .d{font-family:'Anton',sans-serif;font-size:20px;color:var(--gold);}
+  .tstep p{color:#c7ccd8;font-size:15px;margin-top:4px;}
+
+  /* SPONSOR */
+  .sponsor-cta{background:var(--grad);border-radius:22px;padding:44px 34px;text-align:center;color:#fff;box-shadow:0 14px 40px rgba(0,0,0,.2);}
+  .sponsor-cta h2{color:#fff;}
+  .sponsor-cta p{max-width:600px;margin:8px auto 22px;font-weight:500;}
+
+  footer{background:#12162a;color:#aeb4c6;text-align:center;padding:40px 20px;font-size:14px;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer .fine{margin-top:14px;font-size:12px;color:#7a8095;max-width:560px;margin-left:auto;margin-right:auto;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Women's Free Flight <span>Film Festival</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#submit">Submit</a></li>
+    <li><a href="#prizes">Prizes</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#dates">Dates</a></li>
+    <li><a href="#sponsor">Sponsor</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="glow"></div>
+  <div class="glider g1">🪂</div>
+  <div class="glider g2">🪂</div>
+  <div class="glider g3">🪂</div>
+  <div class="eyebrow">Call for Films · U.S.-Based Pilots</div>
+  <h1>Women's Free Flight<br>Film Festival</h1>
+  <div class="year">2027</div>
+  <p class="sub">Celebrating women in the air — their stories, adventures, and community in free flight.</p>
+  <div class="cta-row">
+    <a class="btn" href="#submit">Submit Your Film</a>
+    <a class="btn ghost" href="#about">Learn More</a>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="kicker">About</div>
+    <h2>Stories That Take Flight</h2>
+    <p class="lead">The Women's Free Flight Film Festival celebrates and empowers women pilots by sharing their stories, adventures, challenges, and achievements in free flight. We're building a lasting library of films that clubs, instructors, and organizations can use to welcome new pilots into the sport — proving that a powerful story from a newly rated pilot can shine as brightly as any big-budget expedition film.</p>
+    <p class="lead"><strong>Our mission:</strong> more visibility, more community, more women in the air.</p>
+  </div>
+</section>
+
+<!-- SUBMIT -->
+<section id="submit" class="alt">
+  <div class="wrap">
+    <div class="kicker">Enter</div>
+    <h2>Submit Your Film</h2>
+    <p class="lead">Submit any short film <strong>2–20 minutes</strong> featuring a woman participating in and interacting with free flight — paragliding, hang gliding, speedflying, speedriding, miniwing, or hike-and-fly.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>What we're looking for</h3>
+        <p>Adventure, mentorship, personal journeys, comebacks, community, history, instructional experiences — all welcome. No extreme flying or professional production required. We prioritize <strong>storytelling over budget</strong>.</p>
+      </div>
+      <div class="card">
+        <h3>Requirements</h3>
+        <ul>
+          <li>2–20 minutes (5–10 recommended)</li>
+          <li>U.S.-based pilot as the primary subject</li>
+          <li>MP4, 1080p+, H.264</li>
+          <li>English or English subtitles</li>
+          <li>Suitable for all audiences</li>
+          <li>You hold rights to any music used</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:30px;">
+      <a class="btn" href="FILMFREEWAY_URL" target="_blank" rel="noopener">Submit on FilmFreeway</a>
+      <p style="margin-top:14px;font-weight:700;color:#b8791f;">📅 Submission deadline: May 2027</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIZES -->
+<section id="prizes">
+  <div class="wrap">
+    <div class="kicker">Prizes &amp; Judging</div>
+    <h2>Win Up To $1,000</h2>
+    <div class="prizes">
+      <div class="prize"><div class="amt">$1,000</div><div class="pl">🥇 Grand Prize</div></div>
+      <div class="prize"><div class="amt">$500</div><div class="pl">🥈 Second Place</div></div>
+      <div class="prize"><div class="amt">$250</div><div class="pl">🥉 Third Place</div></div>
+    </div>
+    <div class="judging">
+      <p style="margin-top:34px;">How films are judged</p>
+      <div class="bar">
+        <span style="width:35%;background:#ff6b6b;" title="Storytelling 35%"></span>
+        <span style="width:25%;background:#a24bcf;" title="Inspiration & Impact 25%"></span>
+        <span style="width:20%;background:#4b6ccf;" title="Authenticity 20%"></span>
+        <span style="width:10%;background:#ff9a6b;" title="Creativity 10%"></span>
+        <span style="width:10%;background:#ffd88a;" title="Technical 10%"></span>
+      </div>
+      <p style="font-size:14px;color:var(--muted);">Storytelling 35% · Inspiration &amp; Impact 25% · Authenticity 20% · Creativity 10% · Technical 10%</p>
+      <p style="margin-top:18px;" class="philo" >“A powerful story from a newly rated pilot can beat a professionally produced expedition film.”</p>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section id="rules" class="alt">
+  <div class="wrap">
+    <div class="kicker">The Fine Print</div>
+    <h2>Rules &amp; Terms</h2>
+    <p class="lead">Please read these in full before submitting. By submitting, the entrant agrees to these terms.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Eligibility</h3>
+        <ul>
+          <li>Film features a woman as the primary subject</li>
+          <li>Focused on free flight activities</li>
+          <li>Pilot(s) based in the United States</li>
+          <li>Suitable for public audiences</li>
+          <li>Runtime 2–20 minutes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Technical &amp; Screening</h3>
+        <ul>
+          <li>MP4, 1080p minimum, H.264</li>
+          <li>English or English subtitles (auto-captions not sufficient)</li>
+          <li>Screener via Vimeo (password), FilmFreeway upload, or unlisted YouTube (ads off)</li>
+          <li>Entrant holds rights to all music &amp; content used</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:24px;">
+      <h3>Rights &amp; Ownership</h3>
+      <p>Filmmakers retain full ownership of their films. By submitting, entrants grant the festival non-exclusive rights to screen the film at approved events and to use clips or trailers for promotion. Selected films may be included in a lasting library for outreach by clubs, instructors, and organizations. All decisions are made by the festival and its jury at their sole discretion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DATES -->
+<section id="dates" class="dark">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--gold);">Timeline</div>
+    <h2>Key Dates</h2>
+    <div class="timeline">
+      <div class="tstep"><div class="dot"></div><div class="d">Sept 2026</div><p>Submissions open</p></div>
+      <div class="tstep"><div class="dot"></div><div class="d">May 2027</div><p>Submission deadline</p></div>
+      <div class="tstep"><div class="dot"></div><div class="d">June 2027</div><p>Judging &amp; first screening</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR -->
+<section id="sponsor">
+  <div class="wrap">
+    <div class="sponsor-cta">
+      <div class="kicker" style="color:var(--gold);">Partner With Us</div>
+      <h2>Sponsors &amp; Screening Hosts Wanted</h2>
+      <p>Want to help get more women in the air? We're seeking sponsors and event hosts to screen the festival films. Clubs, flight schools, gear brands, and organizations — partner with us to put these stories on the big screen and inspire the next generation of pilots.</p>
+      <a class="btn" href="mailto:CONTACT_EMAIL">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Questions? Email <a href="mailto:CONTACT_EMAIL">CONTACT_EMAIL</a> · Follow <a href="INSTAGRAM_URL">@yourhandle</a></p>
+  <p class="fine">Filmmakers retain full ownership of their films. Screening rights granted are non-exclusive and permit the festival to show submitted films at approved events and use clips/trailers for promotion.</p>
+  <p class="fine">© 2027 Women's Free Flight Film Festival</p>
+</footer>
+
+</body>
+</html>
