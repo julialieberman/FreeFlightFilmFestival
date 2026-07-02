@@ -43,17 +43,30 @@
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
   .hero .glow{display:none;}
 
-  /* FLYING PARAGLIDER VECTORS */
-  .pg{position:absolute;z-index:1;color:rgba(255,255,255,.32);pointer-events:none;}
-  .pg svg{display:block;width:100%;height:auto;}
-  .pg1{top:11%;left:6%;width:78px;animation:floatA 9s ease-in-out infinite;}
-  .pg2{top:15%;right:7%;width:60px;color:rgba(255,255,255,.24);animation:floatB 11s ease-in-out infinite;}
-  .pg3{top:58%;left:9%;width:66px;color:rgba(255,255,255,.22);animation:floatB 10s ease-in-out infinite .8s;}
-  .pg4{top:63%;right:10%;width:84px;animation:floatA 12s ease-in-out infinite .4s;}
-  .pg5{top:7%;left:42%;width:46px;color:rgba(255,255,255,.18);animation:floatA 8s ease-in-out infinite 1.2s;}
-  @keyframes floatA{0%,100%{transform:translate(0,0) rotate(-5deg);}50%{transform:translate(18px,-22px) rotate(3deg);}}
-  @keyframes floatB{0%,100%{transform:translate(0,0) rotate(4deg);}50%{transform:translate(-16px,-16px) rotate(-4deg);}}
-  @media(max-width:680px){.pg2,.pg3,.pg5{display:none;}.pg1{width:56px;}.pg4{width:56px;}}
+  /* FLYING SILHOUETTES */
+  .orbit{position:absolute;width:0;height:0;z-index:1;pointer-events:none;}
+  .orbit.left{top:47%;left:13%;animation:thermal 16s ease-in-out infinite;}
+  .orbit.right{top:49%;right:13%;animation:thermal 18s ease-in-out infinite 1.5s;}
+  .spin{position:absolute;top:0;left:0;animation:orbitspin 12s linear infinite;}
+  .pos{position:absolute;top:0;left:0;}
+  .pos.a{transform:translate(-50%,-50%) translateX(-62px);}
+  .pos.b{transform:translate(-50%,-50%) translateX(62px);}
+  .xc{display:block;width:64px;opacity:.82;animation:orbitspin 12s linear infinite reverse;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));}
+  .xc img,.sw img{display:block;width:100%;height:auto;}
+  .orbit.right .spin,.orbit.right .xc{animation-duration:14s;}
+  @keyframes orbitspin{to{transform:rotate(360deg);}}
+  @keyframes thermal{0%,100%{transform:translateY(58px);}50%{transform:translateY(-66px);}}
+  .sw{position:absolute;top:0;z-index:1;width:46px;opacity:.78;pointer-events:none;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));}
+  .sw1{left:22%;animation:diveR 8.5s linear infinite;}
+  .sw2{left:63%;width:38px;animation:diveL 10.5s linear infinite 3.5s;}
+  @keyframes diveR{0%{transform:translate(0,-20vh) rotate(0deg);opacity:0;}
+    8%{opacity:.78;}90%{opacity:.78;}100%{transform:translate(26vw,100vh) rotate(720deg);opacity:0;}}
+  @keyframes diveL{0%{transform:translate(0,-20vh) rotate(0deg);opacity:0;}
+    8%{opacity:.78;}90%{opacity:.78;}100%{transform:translate(-24vw,100vh) rotate(-720deg);opacity:0;}}
+  @media(max-width:680px){.orbit.right,.sw2{display:none;}
+    .xc{width:50px;}.pos.a{transform:translate(-50%,-50%) translateX(-48px);}.pos.b{transform:translate(-50%,-50%) translateX(48px);}}
 
   /* PHOTO BAND & ABOUT IMAGE */
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;margin-top:10px;}
@@ -137,23 +150,29 @@
   <div class="brand">Women's Free Flight <span>Film Festival</span></div>
   <ul>
     <li><a href="#about">About</a></li>
-    <li><a href="#team">About Us</a></li>
     <li><a href="#register">Get Involved</a></li>
     <li><a href="#submit">Submit</a></li>
     <li><a href="#prizes">Prizes</a></li>
     <li><a href="#rules">Rules</a></li>
     <li><a href="#dates">Dates</a></li>
     <li><a href="#sponsor">Sponsor</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#team">About Us</a></li>
   </ul>
 </nav>
 
 <header class="hero">
   <h1 class="sr-only">Women's Free Flight Film Festival 2027</h1>
-  <span class="pg pg1"><svg viewBox="0 0 120 90"><path d="M6 28 C34 8 86 8 114 28" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><line x1="16" y1="31" x2="58" y2="70" stroke="currentColor" stroke-width="1.5"/><line x1="60" y1="24" x2="60" y2="66" stroke="currentColor" stroke-width="1.5"/><line x1="104" y1="31" x2="62" y2="70" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="72" r="5" fill="currentColor"/></svg></span>
-  <span class="pg pg2"><svg viewBox="0 0 120 90"><path d="M6 28 C34 8 86 8 114 28" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><line x1="16" y1="31" x2="58" y2="70" stroke="currentColor" stroke-width="1.5"/><line x1="60" y1="24" x2="60" y2="66" stroke="currentColor" stroke-width="1.5"/><line x1="104" y1="31" x2="62" y2="70" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="72" r="5" fill="currentColor"/></svg></span>
-  <span class="pg pg3"><svg viewBox="0 0 120 90"><path d="M6 28 C34 8 86 8 114 28" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><line x1="16" y1="31" x2="58" y2="70" stroke="currentColor" stroke-width="1.5"/><line x1="60" y1="24" x2="60" y2="66" stroke="currentColor" stroke-width="1.5"/><line x1="104" y1="31" x2="62" y2="70" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="72" r="5" fill="currentColor"/></svg></span>
-  <span class="pg pg4"><svg viewBox="0 0 120 90"><path d="M6 28 C34 8 86 8 114 28" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><line x1="16" y1="31" x2="58" y2="70" stroke="currentColor" stroke-width="1.5"/><line x1="60" y1="24" x2="60" y2="66" stroke="currentColor" stroke-width="1.5"/><line x1="104" y1="31" x2="62" y2="70" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="72" r="5" fill="currentColor"/></svg></span>
-  <span class="pg pg5"><svg viewBox="0 0 120 90"><path d="M6 28 C34 8 86 8 114 28" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><line x1="16" y1="31" x2="58" y2="70" stroke="currentColor" stroke-width="1.5"/><line x1="60" y1="24" x2="60" y2="66" stroke="currentColor" stroke-width="1.5"/><line x1="104" y1="31" x2="62" y2="70" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="72" r="5" fill="currentColor"/></svg></span>
+  <span class="orbit left"><span class="spin">
+    <span class="pos a"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
+    <span class="pos b"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
+  </span></span>
+  <span class="orbit right"><span class="spin">
+    <span class="pos a"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
+    <span class="pos b"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
+  </span></span>
+  <span class="sw sw1"><img src="assets/speedflyer.png" alt=""></span>
+  <span class="sw sw2"><img src="assets/speedflyer.png" alt=""></span>
   <img class="logo" src="assets/wfff-logo.png" alt="Women's Free Flight Film Festival logo">
   <div class="year">2027</div>
   <p class="sub">Celebrating women in the air — their stories, adventures, and community in free flight.</p>
@@ -200,25 +219,6 @@
   <div class="pb-inner">
     <h2>The Sky Is Full of Stories</h2>
     <p>“A powerful story from a newly rated pilot can shine as brightly as any expedition film.”</p>
-  </div>
-</section>
-
-<!-- ABOUT US / TEAM -->
-<section id="team">
-  <div class="wrap">
-    <div class="kicker">About Us</div>
-    <h2>Who's Behind This</h2>
-    <p class="lead">Built by pilots, for pilots — with the community that's lifting more women into the air.</p>
-    <div class="grid2">
-      <div class="card">
-        <h3>Julia Lieberman — Founder</h3>
-        <p>Founder of <strong>Women of Speedflying</strong> and a passionate pilot. After learning to paraglide in 2021, Julia has hosted international women's events, run scholarships, written articles for USHPA, and most recently joined the <strong>USHPA Women's Committee</strong> — helping build a sponsored fund in alliance with the <strong>Free Flight Foundation</strong>.</p>
-      </div>
-      <div class="card">
-        <h3>In Partnership With the USHPA Women's Committee</h3>
-        <p>This festival is proud to align with the <a href="https://www.ushpa.org" target="_blank" rel="noopener" style="color:#b8791f;font-weight:700;">USHPA Women's Committee</a>, chaired by <strong>Violeta Jimenez</strong> — president of the Women's Committee and an internationally recognized cross-country (XC) champion. Together we're working to grow visibility, mentorship, and opportunity for women in free flight.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -336,10 +336,44 @@
   </div>
 </section>
 
+<!-- DONATE -->
+<section id="donate" class="alt">
+  <div class="wrap">
+    <div class="sponsor-cta">
+      <div class="kicker" style="color:var(--gold);">Support the Mission</div>
+      <h2>Donate to the Women's Initiatives Fund</h2>
+      <p>In partnership with the <strong>Foundation for Free Flight</strong>, donations to the Women's Initiatives Fund help power scholarships, events, and this festival — getting more women into the air. Every contribution makes a difference.</p>
+      <a class="btn" href="https://foundationforfreeflight.org/womens-initiatives-fund/" target="_blank" rel="noopener">Donate Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US / TEAM (bottom) -->
+<section id="team">
+  <div class="wrap">
+    <div class="kicker">About Us</div>
+    <h2>Who's Behind This</h2>
+    <p class="lead">Built by pilots, for pilots — with the community that's lifting more women into the air.</p>
+    <div class="grid2">
+      <div class="card">
+        <div style="display:flex;gap:18px;align-items:center;margin-bottom:12px;">
+          <img src="assets/juliasportyheadshot.jpg" alt="Julia Lieberman" style="width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 6px 18px rgba(0,0,0,.15);">
+          <h3 style="margin:0;">Julia Lieberman — Founder</h3>
+        </div>
+        <p>Founder of <strong>Women of Speedflying</strong> and a passionate pilot. After learning to paraglide in 2021, Julia has hosted international women's events, run scholarships, written articles for USHPA, and most recently joined the <strong>USHPA Women's Committee</strong> — helping build a sponsored fund in alliance with the <strong>Foundation for Free Flight</strong>.</p>
+      </div>
+      <div class="card">
+        <h3>Our Partners</h3>
+        <p>Proudly aligned with the <a href="https://femsfreeflight.com/" target="_blank" rel="noopener" style="color:#b8791f;font-weight:700;">USHPA Women's Committee</a>, chaired by <strong>Violeta Jimenez</strong> — president of the Women's Committee and an internationally recognized cross-country (XC) champion.</p>
+        <p>In partnership with the <a href="https://foundationforfreeflight.org/womens-initiatives-fund/" target="_blank" rel="noopener" style="color:#b8791f;font-weight:700;">Foundation for Free Flight</a>, supporting the Women's Initiatives Fund. Together we're growing visibility, mentorship, and opportunity for women in free flight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p>Questions or want to get involved? Reach out on Instagram — <a href="https://instagram.com/julialiebs" target="_blank" rel="noopener">@julialiebs</a></p>
   <p class="fine">Filmmakers retain full ownership of their films. Screening rights granted are non-exclusive and permit the festival to show submitted films at approved events and use clips/trailers for promotion.</p>
-  <p class="fine">© 2027 Women's Free Flight Film Festival</p>
 </footer>
 
 </body>
