@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --grad: linear-gradient(135deg,#ff8a5c 0%,#ff6b6b 22%,#a24bcf 55%,#4b6ccf 80%,#1e3a8a 100%);
+    --grad: linear-gradient(135deg,#5b2d91 0%,#442171 55%,#2e1650 100%);
     --gold:#ffd88a; --ink:#1a1f30; --paper:#fbfaf7; --muted:#5a6072;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -44,29 +44,53 @@
   .hero .glow{display:none;}
 
   /* FLYING SILHOUETTES */
-  .orbit{position:absolute;width:0;height:0;z-index:1;pointer-events:none;}
-  .orbit.left{top:47%;left:13%;animation:thermal 16s ease-in-out infinite;}
-  .orbit.right{top:49%;right:13%;animation:thermal 18s ease-in-out infinite 1.5s;}
-  .spin{position:absolute;top:0;left:0;animation:orbitspin 12s linear infinite;}
-  .pos{position:absolute;top:0;left:0;}
-  .pos.a{transform:translate(-50%,-50%) translateX(-62px);}
-  .pos.b{transform:translate(-50%,-50%) translateX(62px);}
-  .xc{display:block;width:64px;opacity:.82;animation:orbitspin 12s linear infinite reverse;
+  /* XC pairs: real frame-by-frame rotation (120-frame sprite sheet) + circle each other with depth + gentle climb */
+  .orbit{position:absolute;z-index:1;pointer-events:none;
+    animation:thermal 15s ease-in-out infinite;
+    display:none;} /* TEMP: XC sprite hidden pending recreated frames — remove this line to re-enable */
+  .orbit.left{top:44%;left:14%;}
+  .orbit.right{top:46%;right:14%;animation-delay:1.5s;}
+  .turn{position:absolute;top:0;left:0;}
+  .orbit.right .turn{transform:scaleX(-1);} /* mirror so right side rotates/orbits the opposite way */
+  .orbit .g{position:absolute;top:0;left:0;width:68px;height:85px;margin:-42px 0 0 -34px;
+    background-image:url('assets/glidersheet.png');background-repeat:no-repeat;
+    background-size:1020px 680px;
     filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));}
-  .xc img,.sw img{display:block;width:100%;height:auto;}
-  .orbit.right .spin,.orbit.right .xc{animation-duration:14s;}
-  @keyframes orbitspin{to{transform:rotate(360deg);}}
-  @keyframes thermal{0%,100%{transform:translateY(58px);}50%{transform:translateY(-66px);}}
-  .sw{position:absolute;top:0;z-index:1;width:46px;opacity:.78;pointer-events:none;
+  .orbit .g.a{animation:orbitXC 9s ease-in-out infinite,
+    spx .75s steps(15) infinite, spy 6s steps(8) infinite;}
+  .orbit .g.b{animation:orbitXC 9s ease-in-out infinite -4.5s,
+    spx .75s steps(15) infinite -.3s, spy 6s steps(8) infinite -3s;}
+  /* circle each other with depth: near = bigger & in front, far = smaller & behind */
+  @keyframes orbitXC{
+    0%  {transform:translate(0,7px)   scale(1.15);z-index:3;}
+    25% {transform:translate(66px,0)  scale(.82);z-index:2;}
+    50% {transform:translate(0,-7px)  scale(.55);z-index:1;}
+    75% {transform:translate(-66px,0) scale(.82);z-index:2;}
+    100%{transform:translate(0,7px)   scale(1.15);z-index:3;}
+  }
+  @keyframes spx{from{background-position-x:0;}to{background-position-x:-1020px;}}
+  @keyframes spy{from{background-position-y:0;}to{background-position-y:-680px;}}
+  @keyframes thermal{0%,100%{transform:translateY(46px);}50%{transform:translateY(-52px);}}
+
+  /* Speedflyers: diagonal dives with barrel rolls */
+  .sw{position:absolute;top:0;z-index:2;width:46px;height:auto;opacity:.9;pointer-events:none;
     filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));}
   .sw1{left:22%;animation:diveR 8.5s linear infinite;}
   .sw2{left:63%;width:38px;animation:diveL 10.5s linear infinite 3.5s;}
   @keyframes diveR{0%{transform:translate(0,-20vh) rotate(0deg);opacity:0;}
-    8%{opacity:.78;}90%{opacity:.78;}100%{transform:translate(26vw,100vh) rotate(720deg);opacity:0;}}
+    8%{opacity:.9;}90%{opacity:.9;}100%{transform:translate(26vw,100vh) rotate(720deg);opacity:0;}}
   @keyframes diveL{0%{transform:translate(0,-20vh) rotate(0deg);opacity:0;}
-    8%{opacity:.78;}90%{opacity:.78;}100%{transform:translate(-24vw,100vh) rotate(-720deg);opacity:0;}}
-  @media(max-width:680px){.orbit.right,.sw2{display:none;}
-    .xc{width:50px;}.pos.a{transform:translate(-50%,-50%) translateX(-48px);}.pos.b{transform:translate(-50%,-50%) translateX(48px);}}
+    8%{opacity:.9;}90%{opacity:.9;}100%{transform:translate(-24vw,100vh) rotate(-720deg);opacity:0;}}
+
+  /* Acro gliders: helico — spin in place */
+  .acro{position:absolute;z-index:1;height:auto;pointer-events:none;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));}
+  .acro1{top:9%;left:9%;width:54px;animation:heli 3.6s linear infinite;}
+  .acro2{top:13%;right:10%;width:44px;animation:heli 4.4s linear infinite reverse;}
+  .acro3{top:66%;left:10%;width:48px;animation:heli 3s linear infinite;}
+  @keyframes heli{to{transform:rotate(360deg);}}
+
+  @media(max-width:680px){.orbit.right,.sw2,.acro2,.acro3{display:none;}.orbit .g{width:48px;}}
 
   /* PHOTO BAND & ABOUT IMAGE */
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;margin-top:10px;}
@@ -75,8 +99,8 @@
   .about-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;
     box-shadow:0 14px 40px rgba(0,0,0,.18);}
   @media(max-width:680px){.about-grid{grid-template-columns:1fr;}}
-  .photo-band{position:relative;min-height:440px;display:flex;align-items:center;justify-content:center;
-    text-align:center;color:#fff;background-size:cover;background-position:center;padding:60px 20px;}
+  .photo-band{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;color:#fff;background-size:cover;background-position:center 62%;padding:60px 20px;}
   .photo-band:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,20,60,.45),rgba(30,20,60,.55));}
   .photo-band .pb-inner{position:relative;max-width:760px;}
   .photo-band h2{color:#fff;}
@@ -163,16 +187,23 @@
 
 <header class="hero">
   <h1 class="sr-only">Women's Free Flight Film Festival 2027</h1>
-  <span class="orbit left"><span class="spin">
-    <span class="pos a"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
-    <span class="pos b"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
-  </span></span>
-  <span class="orbit right"><span class="spin">
-    <span class="pos a"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
-    <span class="pos b"><span class="xc"><img src="assets/xc-glider.png" alt=""></span></span>
-  </span></span>
-  <span class="sw sw1"><img src="assets/speedflyer.png" alt=""></span>
-  <span class="sw sw2"><img src="assets/speedflyer.png" alt=""></span>
+  <span class="orbit left">
+    <span class="turn">
+      <span class="g a"></span>
+      <span class="g b"></span>
+    </span>
+  </span>
+  <span class="orbit right">
+    <span class="turn">
+      <span class="g a"></span>
+      <span class="g b"></span>
+    </span>
+  </span>
+  <img class="sw sw1" src="assets/speedfly.png" alt="">
+  <img class="sw sw2" src="assets/speedfly.png" alt="">
+  <img class="acro acro1" src="assets/acroglider.png" alt="">
+  <img class="acro acro2" src="assets/acroglider.png" alt="">
+  <img class="acro acro3" src="assets/acroglider.png" alt="">
   <img class="logo" src="assets/wfff-logo.png" alt="Women's Free Flight Film Festival logo">
   <div class="year">2027</div>
   <p class="sub">Celebrating women in the air — their stories, adventures, and community in free flight.</p>
@@ -222,6 +253,14 @@
   </div>
 </section>
 
+<!-- PHOTO BAND: XC GAGGLE -->
+<section class="photo-band" style="background-image:url('assets/xccomp.jpg');background-position:center;min-height:52vh;">
+  <div class="pb-inner">
+    <h2>Every Wing Has a Story</h2>
+    <p>From first flights to cross-country adventures — we want to see them all.</p>
+  </div>
+</section>
+
 <!-- SUBMIT -->
 <section id="submit" class="alt">
   <div class="wrap">
@@ -246,8 +285,9 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:30px;">
-      <a class="btn" href="https://instagram.com/julialiebs" target="_blank" rel="noopener">Follow @julialiebs for Submissions</a>
-      <p style="margin-top:14px;font-weight:700;color:#b8791f;">📅 Submissions open Sept 2026 · Deadline May 2027</p>
+      <p style="font-weight:800;font-size:19px;color:#442171;">Check back later for a submission link in September.</p>
+      <p style="margin-top:10px;font-weight:700;color:#b8791f;">📅 Submissions open Sept 2026 · Deadline May 2027</p>
+      <p style="margin-top:8px;color:var(--muted);">Questions? Contact Julia on Instagram — <a href="https://instagram.com/julialiebs" target="_blank" rel="noopener" style="color:#442171;font-weight:700;">@julialiebs</a></p>
     </div>
   </div>
 </section>
@@ -272,7 +312,6 @@
         <span style="width:10%;background:#ffd88a;" title="Technical 10%"></span>
       </div>
       <p style="font-size:14px;color:var(--muted);">Storytelling 35% · Inspiration &amp; Impact 25% · Authenticity 20% · Creativity 10% · Technical 10%</p>
-      <p style="margin-top:18px;" class="philo" >“A powerful story from a newly rated pilot can beat a professionally produced expedition film.”</p>
     </div>
   </div>
 </section>
@@ -345,6 +384,14 @@
       <p>In partnership with the <strong>Foundation for Free Flight</strong>, donations to the Women's Initiatives Fund help power scholarships, events, and this festival — getting more women into the air. Every contribution makes a difference.</p>
       <a class="btn" href="https://foundationforfreeflight.org/womens-initiatives-fund/" target="_blank" rel="noopener">Donate Now</a>
     </div>
+  </div>
+</section>
+
+<!-- PHOTO BAND: COMMUNITY -->
+<section class="photo-band" style="background-image:url('assets/groupphoto-web.jpg');background-position:center 40%;min-height:52vh;">
+  <div class="pb-inner">
+    <h2>A Growing Community of Women Pilots</h2>
+    <p>Adventures, friendships, and firsts — together in the air.</p>
   </div>
 </section>
 
