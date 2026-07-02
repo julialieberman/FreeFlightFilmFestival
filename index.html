@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Women's Free Flight Film Festival 2027</title>
 <meta name="description" content="A film festival celebrating women in free flight. Submit a short film (2–20 min) and win up to $1,000. Deadline May 2027.">
+<link rel="icon" type="image/png" href="assets/wfff-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -33,9 +34,13 @@
   @media(max-width:640px){nav ul{display:none;}}
 
   /* HERO */
-  header.hero{position:relative;min-height:82vh;display:flex;flex-direction:column;
+  header.hero{position:relative;min-height:88vh;display:flex;flex-direction:column;
     justify-content:center;align-items:center;text-align:center;color:#fff;overflow:hidden;
-    background:linear-gradient(180deg,rgba(15,25,55,.2),rgba(10,15,35,.75)),var(--grad);padding:80px 20px;}
+    background:linear-gradient(160deg,#3a1c6e 0%,#5b2a9e 40%,#7b3fbf 70%,#2a1550 100%);padding:70px 20px;}
+  .hero .logo{position:relative;width:min(420px,78vw);height:auto;
+    filter:drop-shadow(0 14px 40px rgba(0,0,0,.45));animation:floaty 6s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
   .hero .glow{position:absolute;top:-160px;left:50%;transform:translateX(-50%);
     width:700px;height:700px;border-radius:50%;pointer-events:none;
     background:radial-gradient(circle,rgba(255,220,150,.5),rgba(255,180,120,.12) 45%,transparent 70%);}
@@ -118,11 +123,8 @@
 
 <header class="hero">
   <div class="glow"></div>
-  <div class="glider g1">🪂</div>
-  <div class="glider g2">🪂</div>
-  <div class="glider g3">🪂</div>
-  <div class="eyebrow">Call for Films · U.S.-Based Pilots</div>
-  <h1>Women's Free Flight<br>Film Festival</h1>
+  <h1 class="sr-only">Women's Free Flight Film Festival 2027</h1>
+  <img class="logo" src="assets/wfff-logo.png" alt="Women's Free Flight Film Festival logo">
   <div class="year">2027</div>
   <p class="sub">Celebrating women in the air — their stories, adventures, and community in free flight.</p>
   <div class="cta-row">
