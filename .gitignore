@@ -1,0 +1,18 @@
+# Source / working asset files not used by the live site
+assets/groupphoto.JPEG
+assets/rotatingparagliders.png
+assets/xcglider.png
+assets/acroparaglider.png
+assets/speedflyvector.png
+assets/xc-glider vector.png
+assets/xc-glider rotated.png
+assets/xc-glider.png
+assets/speedflyer.png
+assets/silhouettes.png
+
+# Archives / exports
+*.zip
+
+# OS cruft
+Thumbs.db
+.DS_Store
